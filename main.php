@@ -9,6 +9,7 @@ if(isset($_POST['last_page'])){echo "LAST";
 
 else {$curr_page = 1;}
 var_dump($_POST['last_page']);
+var_dump($curr_page);
 
 
 $bg = "images/bg".rand(1,6).".jpg";
@@ -29,7 +30,7 @@ echo "<html style='background: url($bg) no-repeat center center fixed;
 
 <?php
 //DEFINING VARS
-    $query = "SELECT * FROM articles";
+    $query = "SELECT * FROM articles LIMIT 10";
     $result = mysqli_query($db,$query);
     $num_rows = mysqli_num_rows($result);
     $articles = array();
@@ -71,12 +72,16 @@ mysqli_close($db);
 ?>
     <?php 
     //DEFINING FUNC TO PRINT
-//    $curr_page =1;
+
     $items_per_row = 5;
     $remainder = $num_rows % $items_per_row;
     $num_pages = (($num_rows - $remainder) / $items_per_row)+1;
+    if($remainder == 0){
+		$num_pages--;
+		}
+    var_dump($num_pages);
+    $firt_artcile = ($curr_page-1)*5+1;
 
- 
     ?>
     
 
@@ -85,7 +90,7 @@ echo  "
 <br><br><br><br><br><br><br><br>
 <div class='demo-blog__posts mdl-grid' >";
 
-for($i=1;$i<6;$i++){
+for($i=$firt_artcile;$i<$firt_artcile+5;$i++){
     $image = "images/image".$i.".jpg";
     $title = $articles[$i]->title;
     $summary = $articles[$i]->summary;
