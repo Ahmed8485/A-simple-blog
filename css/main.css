@@ -1,0 +1,53 @@
+html{
+/*background: url(bg.jpg) no-repeat center center fixed;*/
+    -webkit-background-size: cover !important;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover !important;
+
+
+}
+.card-image{
+height: auto;
+}
+.card-960{
+    max-width:960px;
+}
+.card-max{
+    width: 100%;
+}
+
+.img {
+    height: 200px;
+    width: 960px;
+    position: relative
+}
+.img-text{
+    position: absolute;
+    top: 56%;
+    left: 0px;
+    width: 100%;
+    color: #fafafa;
+    font-weight: 500;
+    margin-left: 20px;
+}
+#card-960{
+    max-width:960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#bg-image{
+    background-image: url('images/bg.jpg');
+    position: fixed;
+}
+
+#wrapper {
+    width: 100% !important;
+    text-align: center;
+}
+.mybutton{
+    border: 1px solid white;
+    font-weight: 500;
+    color: white !important;
+}
+
