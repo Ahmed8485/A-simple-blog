@@ -30,7 +30,7 @@ echo "<html style='background: url($bg) no-repeat center center fixed;
 
 <?php
 //DEFINING VARS
-    $query = "SELECT * FROM articles LIMIT 10";
+    $query = "SELECT * FROM articles";
     $result = mysqli_query($db,$query);
     $num_rows = mysqli_num_rows($result);
     $articles = array();
@@ -89,8 +89,14 @@ mysqli_close($db);
 echo  "
 <br><br><br><br><br><br><br><br>
 <div class='demo-blog__posts mdl-grid' >";
+$last_loop = $firt_artcile+5;
+if(($num_rows - $firt_artcile) < 5){
+    $last_loop = $num_rows+1;
+}
+    
 
-for($i=$firt_artcile;$i<$firt_artcile+5;$i++){
+
+for($i=$firt_artcile;$i<$last_loop;$i++){
     $image = "images/image".$i.".jpg";
     $title = $articles[$i]->title;
     $summary = $articles[$i]->summary;
