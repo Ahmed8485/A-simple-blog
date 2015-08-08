@@ -1,0 +1,3 @@
++ Make div clickable
+- Make div point to entry.php dont use forms
+

@@ -1,18 +1,24 @@
 <?php
-if(isset($_POST['next'])){$curr_page= $_POST['last_page']+1;}
-elseif(isset($_POST['previous'])){echo "{REV";
-                              $curr_page= $_POST['last_page']-1;
-                              }
-if(isset($_POST['last_page'])){echo "LAST";
-                              
-                              }
+if(isset($_POST['next']))
+{
+    $curr_page= $_POST['last_page']+1;
+}
+elseif(isset($_POST['previous']))
+{
+    $curr_page= $_POST['last_page']-1;
+}
+elseif(isset($_POST['back']))
+{
+    var_dump($_POST['back']);
+    $curr_page = $_POST['last_page'];
+}
 
+
+if(isset($_POST['last_page'])){   }
 else {$curr_page = 1;}
-var_dump($_POST['last_page']);
-var_dump($curr_page);
 
 
-$bg = "images/bg".rand(1,6).".jpg";
+$bg = "images/bg".rand(1,8).".jpg";
 
 echo "<html style='background: url($bg) no-repeat center center fixed;
 -webkit-background-size: cover !important;
@@ -104,10 +110,10 @@ for($i=$firt_artcile;$i<$last_loop;$i++){
     $date = $articles[$i]->date;
 echo "<div class='mdl-card mdl-cell mdl-cell--12-col card-960' id='card-960'>
    
-    <div class='mdl-card__media img '>
+    <a href='entry.php?article_no=$i&calling_page=$curr_page'><div class='mdl-card__media img '>
         <img src='$image' width='960px' height='200px' border='0'>
         <h3 class='img-text'> $title</h3>
-    </div>
+    </div></a>
     <div class='mdl-card__supporting-text mdl-color-text--grey-600' style='width:97%'>
         $summary
     </div>

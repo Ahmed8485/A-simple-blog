@@ -5,14 +5,19 @@
       require('db_conn.php');
       //DATABSE READING
 //        var_dump($db);
-          $article_no = 2;
+          $article_no = $_GET['article_no'];
+          $calling_page = $_GET['calling_page'];
+            var_dump($calling_page);
+//          $calling_page = 2;
+//$article_no = 4;
+//
           $query =  "SELECT title,content,publicationDate FROM articles WHERE id=$article_no";
           $result = mysqli_query($db,$query);
           $num_rows = mysqli_num_rows($result);
           if($num_rows==0 || !$num_rows){
              header('Location: /main.php');
           }
-          $bg = "images/bg".rand(1,6).".jpg";
+          $bg = "images/bg".rand(1,8).".jpg";
 
 echo "<html style='background: url($bg) no-repeat center center fixed;
 -webkit-background-size: cover !important;
@@ -55,7 +60,7 @@ foreach($row as $key => $value){
         $col++;
     
 }
-    print "<br> T $title, C is $content, D is $date";
+
 }
 
 ?>
@@ -132,8 +137,9 @@ foreach($row as $key => $value){
     </div>   <form action='main.php' method='post' >
         <div id='wrapper'><input class='mdl-button mdl-js-button mdl-button--                                   raised mdl-js-ripple-effect mybutton'   type='submit' value='BACK' name='back'/>
         </div>
-        <input type='hidden' name='last_page' value='1'>
+        <input type='hidden' name='last_page' value='<?php echo $calling_page ?>'>
     </form></div>
+<br><br><br><br><br><br>
 <footer class="mdl-mini-footer">
           <div id="wrapper"><b>Copyright Ahmed Inc</b></div>
 
