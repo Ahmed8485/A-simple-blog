@@ -1,6 +1,6 @@
 <?php
     define('USER',"root");
-    define('SERVER',"localhost");
+    define('SERVER',"127.0.0.1");
     define('PASSWORD',"jaffar123");
     define('DATABASE','blog');
     $db = mysqli_connect(SERVER,USER,PASSWORD,DATABASE) 
